@@ -4,7 +4,7 @@
 Adds cisco snmp check script.
 
 ##vmware.pp
-Adds vmware check scripts and check resource definitions.
+Adds vmware check scripts and check resource definitions. Sensu checks forward perfdata to a graphite host.
 
 ###example usage:
 ```

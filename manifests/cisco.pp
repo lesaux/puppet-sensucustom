@@ -22,3 +22,17 @@ $destination = '/etc/sensu/plugins',
 
 
 }
+
+
+define sensucustom::cisco::check-interface ( $community, $ip, $interface, $interfacename, $host ) {
+    sensu::check { "check_cisco_interfaces_${host}_${interfacename}":
+    command     => "/etc/sensu/plugins/check_snmp_cisco.pl -H ${ip} -C ${community} -I ${interface}",
+    subscribers => 'cisco',
+    standalone  =>  false,
+    type        => 'metric',
+    interval    => '180',
+    custom => {
+      source => "${host}"
+    }
+  }
+}

@@ -4,10 +4,10 @@
 Adds cisco snmp check script.
 
 ##vmware.pp
-Adds vmware check scripts and check resource definitions.
+Adds vmware check scripts and check resource definitions. Sensu checks forward perfdata to a graphite host.
 
 ###example usage:
-
+```
 $esx_hosts = {
   'esx-node1' => {   vcenter         => '192.168.0.200',
                      esxhost         => 'esx-node1.your.domnain.com', #hostname as it shows in vcenter
@@ -26,7 +26,7 @@ $datastores = {
 
 create_resources( sensucustom::vmware::esx-checks, $esx_hosts)
 create_resources( sensucustom::vmware::datastore-checks, $datastores )
-
+```
 
 ##mailer.pp
 Adds mailer handler for sensu

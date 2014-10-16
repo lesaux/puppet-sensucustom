@@ -26,7 +26,7 @@ class sensucustom::nagiosperfdata {
   sensu::handler { 'graphite_custom':
     type    => 'tcp',
     socket  => {
-      host => '192.168.0.84',
+      host => '10.251.0.98',
       port => 2003,
     },
     mutator => ['nagios_perfdata_custom']    
@@ -35,7 +35,7 @@ class sensucustom::nagiosperfdata {
   sensu::handler { 'graphite':
     type    => 'tcp',
     socket  => {
-      host => '192.168.0.84',
+      host => '10.251.0.98',
       port => 2003,
     },
     mutator => ['only_check_output']    

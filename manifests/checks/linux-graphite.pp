@@ -7,7 +7,6 @@ class sensucustom::checks::linux-graphite (
     subscribers => 'linux_graphite',
     standalone  =>  false,
     type        => 'metric',
-    handlers    => 'flapjack',
   }
   sensu::check { 'check_graphite_load':
     command     => "/etc/sensu/plugins/check-data.rb -a 120 -s ${graphite_host} -t servers.`hostname -s`.loadavg.01 -w :::params.graphite.cpu.load.warning|4::: -c :::params.graphite.cpu.load.critical|8:::",

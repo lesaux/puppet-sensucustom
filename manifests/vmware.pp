@@ -77,7 +77,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
 ##HARDWARE CHECKS
   sensu::check { "check_esx_hardware_health_${entity}":
     command     => "/etc/sensu/plugins/check_vmware_esx -f /etc/sensu/plugins/check_vmware_esx_authfile -H ${esxhost} -S runtime -s health",
-    handlers    => ['flapjack'],
+    #handlers    => ['flapjack'],
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
@@ -89,7 +89,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
 ##CPU CHECKS
   sensu::check { "check_esx_cpu_percent_${entity}":
     command     => "/etc/sensu/plugins/check_vmware_api.pl -f /etc/sensu/plugins/check_vmware_esx_authfile -D ${vcenter} -H ${esxhost} -l CPU -s usage",
-    handlers    => ['flapjack','graphite_custom'],
+    handlers    => ['graphite_custom'],
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
@@ -101,7 +101,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
   }
   sensu::check { "check_esx_cpu_mhz_${entity}":
     command     => "/etc/sensu/plugins/check_vmware_api.pl -f /etc/sensu/plugins/check_vmware_esx_authfile -D ${vcenter} -H ${esxhost} -l CPU -s usagemhz",
-    handlers    => ['flapjack','graphite_custom'],
+    handlers    => ['graphite_custom'],
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
@@ -114,7 +114,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
 ##MEMORY CHECKS
   sensu::check { "check_esx_mem_percent_${entity}":
     command     => "/etc/sensu/plugins/check_vmware_api.pl -f /etc/sensu/plugins/check_vmware_esx_authfile -D ${vcenter} -H ${esxhost} -l MEM -s usage",
-    handlers    => ['flapjack','graphite_custom'],
+    handlers    => ['graphite_custom'],
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
@@ -126,7 +126,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
   }
   sensu::check { "check_esx_mem_MB_${entity}":
     command     => "/etc/sensu/plugins/check_vmware_api.pl -f /etc/sensu/plugins/check_vmware_esx_authfile -D ${vcenter} -H ${esxhost} -l MEM -s usagemb",
-    handlers    => ['flapjack','graphite_custom'],
+    handlers    => ['graphite_custom'],
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
@@ -138,7 +138,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
   }
   sensu::check { "check_esx_mem_swap_${entity}":
     command     => "/etc/sensu/plugins/check_vmware_api.pl -f /etc/sensu/plugins/check_vmware_esx_authfile -D ${vcenter} -H ${esxhost} -l MEM -s swap",
-    handlers    => ['flapjack','graphite_custom'],
+    handlers    => ['graphite_custom'],
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
@@ -150,7 +150,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
   }
   sensu::check { "check_esx_mem_overhead_${entity}":
     command     => "/etc/sensu/plugins/check_vmware_api.pl -f /etc/sensu/plugins/check_vmware_esx_authfile -D ${vcenter} -H ${esxhost} -l MEM -s overhead",
-    handlers    => ['flapjack','graphite_custom'],
+    handlers    => ['graphite_custom'],
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
@@ -163,7 +163,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
 ##NETWORK CHECKS
   sensu::check { "check_esx_net_overall_${entity}":
     command     => "/etc/sensu/plugins/check_vmware_api.pl -f /etc/sensu/plugins/check_vmware_esx_authfile -D ${vcenter} -H ${esxhost} -l NET -s usage",
-    handlers    => ['flapjack','graphite_custom'],
+    handlers    => ['graphite_custom'],
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
@@ -175,7 +175,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
   }
   sensu::check { "check_esx_net_receive_${entity}":
     command     => "/etc/sensu/plugins/check_vmware_api.pl -f /etc/sensu/plugins/check_vmware_esx_authfile -D ${vcenter} -H ${esxhost} -l NET -s receive",
-    handlers    => ['flapjack','graphite_custom'],
+    handlers    => ['graphite_custom'],
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
@@ -187,7 +187,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
   }
   sensu::check { "check_esx_net_send_${entity}":
     command     => "/etc/sensu/plugins/check_vmware_api.pl -f /etc/sensu/plugins/check_vmware_esx_authfile -D ${vcenter} -H ${esxhost} -l NET -s send",
-    handlers    => ['flapjack','graphite_custom'],
+    handlers    => ['graphite_custom'],
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
@@ -200,7 +200,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
 ##IO CHECKS
   sensu::check { "check_esx_io_read_${entity}":
     command     => "/etc/sensu/plugins/check_vmware_api.pl -f /etc/sensu/plugins/check_vmware_esx_authfile -D ${vcenter} -H ${esxhost} -l IO -s read",
-    handlers    => ['flapjack','graphite_custom'],
+    handlers    => ['graphite_custom'],
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
@@ -212,7 +212,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
   }
   sensu::check { "check_esx_io_write_${entity}":
     command     => "/etc/sensu/plugins/check_vmware_api.pl -f /etc/sensu/plugins/check_vmware_esx_authfile -D ${vcenter} -H ${esxhost} -l IO -s write",
-    handlers    => ['flapjack','graphite_custom'],
+    handlers    => ['graphite_custom'],
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
@@ -228,7 +228,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
 define sensucustom::vmware::datastore-checks ( $vcenter, $entity, $graphite_prefix, $graphite_folder ) {
   sensu::check { "check_vcenter_datastores_$entity":
     command     => "/etc/sensu/plugins/check_vmware_esx -f /etc/sensu/plugins/check_vmware_esx_authfile -D ${vcenter} -S volumes",
-    handlers    => ['flapjack','graphite_custom'],
+    handlers    => ['graphite_custom'],
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',

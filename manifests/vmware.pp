@@ -75,17 +75,17 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     }
   }
 ##HARDWARE CHECKS
-  sensu::check { "check_esx_hardware_health_${entity}":
-    command     => "/etc/sensu/plugins/check_vmware_esx -f /etc/sensu/plugins/check_vmware_esx_authfile -H ${esxhost} -S runtime -s health",
-    #handlers    => ['flapjack'],
-    subscribers => 'esx',
-    standalone  =>  false,
-    type        => 'metric',
-    interval    => '30',
-    custom => {
-      source => "${entity}"
-    }
-  }
+  #sensu::check { "check_esx_hardware_health_${entity}":
+  #  command     => "/etc/sensu/plugins/check_vmware_esx -f /etc/sensu/plugins/check_vmware_esx_authfile -H ${esxhost} -S runtime -s health",
+  #  #handlers    => ['flapjack'],
+  #  subscribers => 'esx',
+  #  standalone  =>  false,
+  #  type        => 'metric',
+  #  interval    => '30',
+  #  custom => {
+  #    source => "${entity}"
+  #  }
+  #}
 ##CPU CHECKS
   sensu::check { "check_esx_cpu_percent_${entity}":
     command     => "/etc/sensu/plugins/check_vmware_api.pl -f /etc/sensu/plugins/check_vmware_esx_authfile -D ${vcenter} -H ${esxhost} -l CPU -s usage",

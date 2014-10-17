@@ -81,7 +81,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
   #  subscribers => 'esx',
   #  standalone  =>  false,
   #  type        => 'metric',
-  #  interval    => '30',
+  #  interval    => '120',
   #  custom => {
   #    source => "${entity}"
   #  }
@@ -93,7 +93,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
-    interval    => '30',
+    interval    => '120',
     custom => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.cpu"
@@ -105,7 +105,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
-    interval    => '30',
+    interval    => '120',
     custom => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.cpu"
@@ -118,7 +118,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
-    interval    => '30',
+    interval    => '120',
     custom => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.mem"
@@ -130,7 +130,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
-    interval    => '30',
+    interval    => '120',
     custom => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.mem"
@@ -142,7 +142,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
-    interval    => '30',
+    interval    => '120',
     custom => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.mem"
@@ -154,7 +154,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
-    interval    => '30',
+    interval    => '120',
     custom => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.mem"
@@ -167,7 +167,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
-    interval    => '30',
+    interval    => '120',
     custom => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.net"
@@ -179,7 +179,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
-    interval    => '30',
+    interval    => '120',
     custom => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.net"
@@ -191,7 +191,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
-    interval    => '30',
+    interval    => '120',
     custom => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.net"
@@ -204,7 +204,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
-    interval    => '30',
+    interval    => '120',
     custom => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.io"
@@ -216,7 +216,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
-    interval    => '30',
+    interval    => '120',
     custom => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.io"
@@ -232,7 +232,7 @@ define sensucustom::vmware::datastore-checks ( $vcenter, $entity, $graphite_pref
     subscribers => 'esx',
     standalone  =>  false,
     type        => 'metric',
-    interval    => '30',
+    interval    => '120',
     custom => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.datastores"

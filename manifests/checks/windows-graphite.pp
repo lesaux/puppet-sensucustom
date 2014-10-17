@@ -71,6 +71,9 @@ class sensucustom::checks::windows-graphite (
     standalone  =>  false,
     type        => 'metric',
     handlers    => ['flapjack'],
+    custom      => {
+      occurrences => 10,
+    },
   }
 
 }

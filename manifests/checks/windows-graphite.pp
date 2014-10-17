@@ -31,7 +31,7 @@ class sensucustom::checks::windows-graphite (
     handlers    => ['flapjack'],
   }
   sensu::check { 'check_graphite_windows_threads':
-    command     => "/pythian/sensu/checks/check-data.bat ${graphite_host} system.threads \":::params.graphite.windows.system.threads.warning|1800:::\" \":::params.graphite.windows.system.threads.critical|2500:::\"",
+    command     => "/pythian/sensu/checks/check-data.bat ${graphite_host} system.threads \":::params.graphite.windows.system.threads.warning|3000:::\" \":::params.graphite.windows.system.threads.critical|4000:::\"",
     subscribers => 'windows_graphite',
     standalone  =>  false,
     type        => 'metric',

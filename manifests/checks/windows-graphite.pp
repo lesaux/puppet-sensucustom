@@ -59,7 +59,7 @@ class sensucustom::checks::windows-graphite (
     handlers    => ['flapjack'],
   }
   sensu::check { 'check_graphite_windows_processor_interrupts':
-    command     => "/pythian/sensu/checks/check-data.bat ${graphite_host} processor.interrupts_sec \":::params.graphite.windows.processor.interrupts.warning|8000:::\" \":::params.graphite.windows.processor.interrupts.critical|10000:::\"",
+    command     => "/pythian/sensu/checks/check-data.bat ${graphite_host} processor.interrupts_sec \":::params.graphite.windows.processor.interrupts.warning|15000:::\" \":::params.graphite.windows.processor.interrupts.critical|20000:::\"",
     subscribers => 'windows_graphite',
     standalone  =>  false,
     type        => 'metric',

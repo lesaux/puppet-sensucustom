@@ -10,11 +10,14 @@ class sensucustom::checks::windows-graphite (
     handlers    => ['flapjack'],
   }
   sensu::check { 'check_graphite_windows_disk_percent_free_space':
-    command     => "/pythian/sensu/checks/check-data.bat ${graphite_host} disk.percent_free_space_* \":::params.graphite.windows.disk.percent.free.warning|20:::\" \":::params.graphite.windows.disk.percent.free.critical|10:::\" -b",
+    command     => "/pythian/sensu/checks/check-data.bat ${graphite_host} disk.percent_free_space_* \":::params.graphite.windows.disk.percent.free.warning|10:::\" \":::params.graphite.windows.disk.percent.free.critical|5:::\" -b",
     subscribers => 'windows_graphite',
     standalone  =>  false,
     type        => 'metric',
     handlers    => ['flapjack'],
+    custom      => {
+      occurrences => 10,
+    },
   }
   sensu::check { 'check_graphite_windows_network_packets_discarded':
     command     => "/pythian/sensu/checks/check-data.bat ${graphite_host} network.packets_*_discarded \":::params.graphite.windows.network.packets.discarded.warning|1:::\" \":::params.graphite.raphite.windows.network.packets.discarded..critical|1:::\"",

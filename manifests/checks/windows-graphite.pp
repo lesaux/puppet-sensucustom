@@ -16,7 +16,9 @@ class sensucustom::checks::windows-graphite (
     type        => 'metric',
     handlers    => ['flapjack'],
     custom      => {
-      occurrences => 10,
+      occurrences         => 10,
+      low_flap_threshold  => 5,
+      high_flap_threshold => 25,
     },
   }
   sensu::check { 'check_graphite_windows_network_packets_discarded':
@@ -76,6 +78,8 @@ class sensucustom::checks::windows-graphite (
     handlers    => ['flapjack'],
     custom      => {
       occurrences => 10,
+      low_flap_threshold  => 5,
+      high_flap_threshold => 25,
     },
   }
 

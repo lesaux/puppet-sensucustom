@@ -108,7 +108,7 @@ class sensucustom::checks::linux-graphite (
     handlers    => ['flapjack'],
   }
   sensu::check { 'check_graphite_network_rxtx_max':
-    command     => "/etc/sensu/plugins/check-data.rb -a 120 -s ${graphite_host} -t servers.`hostname -s`.network.eth0.*byte -w 1000000 -c 5000000",
+    command     => "/etc/sensu/plugins/check-data.rb -a 120 -s ${graphite_host} -t servers.`hostname -s`.network.eth0.*byte -w 5000000 -c 10000000",
     subscribers => 'linux_graphite',
     standalone  =>  false,
     type        => 'metric',

@@ -24,9 +24,9 @@ $destination = '/etc/sensu/plugins',
 }
 
 
-define sensucustom::cisco::check-interface ( $community, $ip, $interface, $interfacename, $host ) {
+define sensucustom::cisco::check-interface ( $community, $ip, $interface, $interfacename, $host, $state ) {
     sensu::check { "check_cisco_interfaces_${host}_${interfacename}":
-    command     => "/etc/sensu/plugins/check_snmp_cisco.pl -H ${ip} -C ${community} -I ${interface}",
+    command     => "/etc/sensu/plugins/check_snmp_cisco.pl -H ${ip} -C ${community} -I ${interface} -S ${state}",
     subscribers => 'cisco',
     handlers    => ['flapjack'],
     standalone  =>  false,

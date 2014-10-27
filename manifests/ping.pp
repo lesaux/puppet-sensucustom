@@ -7,8 +7,8 @@ define sensucustom::ping  {
     standalone  =>  false,
     type        => 'metric',
     interval    => '180',
-    custom => {
-      source => "${name}"
+    custom      => {
+      source => $name,
     }
   }
 }

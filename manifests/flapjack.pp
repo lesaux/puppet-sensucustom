@@ -14,19 +14,19 @@ $redis_port = '6379',
 $redis_db   = '0', )
 {
   require sensu
-  
+
   file { '/etc/sensu/conf.d/flapjack.json':
-        ensure   => file,
-        content  => template('sensucustom/flapjack.json.erb'),
-        owner    => sensu,
-        group    => sensu,
+        ensure  => file,
+        content => template('sensucustom/flapjack.json.erb'),
+        owner   => sensu,
+        group   => sensu,
   }
 
   file { '/etc/sensu/extensions/flapjack.rb':
         ensure  => file,
         source  => 'puppet:///modules/sensucustom/flapjack.rb',
-        owner    => sensu,
-        group    => sensu,
+        owner   => sensu,
+        group   => sensu,
   }
 
 

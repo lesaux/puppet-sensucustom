@@ -1,53 +1,51 @@
 class sensucustom::vmware (
-
-$destination = '/etc/sensu/plugins',
-$username = username,
-$password = password,
-
+  $destination = '/etc/sensu/plugins',
+  $username = username,
+  $password = password,
 ) {
 
   ensure_packages(['libnagios-plugin-perl'])
 
-  exec {"cpan_Time_Duration":
+  exec {'cpan_Time_Duration':
     command => '/usr/bin/cpan Time::Duration',
     unless  => '/usr/bin/test -f /sources/authors/id/A/AV/AVIF/Time-Duration-1.1.tar.gz',
   }
 
   file { "${destination}/check_vmware_esx":
-        ensure  => file,
-        source  => 'puppet:///modules/sensucustom/check_vmware_esx',
-        owner   => sensu,
-        group   => sensu,
-        mode    => 0755,
+    ensure => file,
+    source => 'puppet:///modules/sensucustom/check_vmware_esx',
+    owner  => sensu,
+    group  => sensu,
+    mode   => '0755',
   }
 
   file { "${destination}/check_esx3":
-        ensure  => file,
-        source  => 'puppet:///modules/sensucustom/check_esx3',
-        owner   => sensu,
-        group   => sensu,
-        mode    => 0755,
+    ensure => file,
+    source => 'puppet:///modules/sensucustom/check_esx3',
+    owner  => sensu,
+    group  => sensu,
+    mode   => '0755',
   }
 
   file { "${destination}/check_vmware_api.pl":
-        ensure  => file,
-        source  => 'puppet:///modules/sensucustom/check_vmware_api.pl',
-        owner   => sensu,
-        group   => sensu,
-        mode    => 0755,
+    ensure => file,
+    source => 'puppet:///modules/sensucustom/check_vmware_api.pl',
+    owner  => sensu,
+    group  => sensu,
+    mode   => '0755',
   }
 
   file { '/var/check-vmware-esx-cache':
-        ensure  => directory,
-        owner    => sensu,
-        group    => sensu,
+    ensure => directory,
+    owner  => sensu,
+    group  => sensu,
   }
 
  file { "${destination}/check_vmware_esx_authfile":
-        ensure   => file,
-        content  => template('sensucustom/authfile.erb'),
-        owner    => sensu,
-        group    => sensu,
+    ensure  => file,
+    content => template('sensucustom/authfile.erb'),
+    owner   => sensu,
+    group   => sensu,
   }
 
 }
@@ -70,8 +68,8 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     standalone  =>  false,
     type        => 'metric',
     interval    => 30,
-    custom => {
-      source => "${entity}"
+    custom      => {
+      source => $entity
     }
   }
 ##HARDWARE CHECKS
@@ -94,8 +92,8 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     standalone  =>  false,
     type        => 'metric',
     interval    => '120',
-    custom => {
-      source               => "${entity}",
+    custom      => {
+      source               => $entity,
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.cpu"
     }
   }
@@ -106,7 +104,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     standalone  =>  false,
     type        => 'metric',
     interval    => '120',
-    custom => {
+    custom      => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.cpu"
     }
@@ -119,7 +117,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     standalone  =>  false,
     type        => 'metric',
     interval    => '120',
-    custom => {
+    custom      => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.mem"
     }
@@ -131,7 +129,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     standalone  =>  false,
     type        => 'metric',
     interval    => '120',
-    custom => {
+    custom      => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.mem"
     }
@@ -143,7 +141,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     standalone  =>  false,
     type        => 'metric',
     interval    => '120',
-    custom => {
+    custom      => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.mem"
     }
@@ -155,7 +153,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     standalone  =>  false,
     type        => 'metric',
     interval    => '120',
-    custom => {
+    custom      => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.mem"
     }
@@ -168,7 +166,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     standalone  =>  false,
     type        => 'metric',
     interval    => '120',
-    custom => {
+    custom      => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.net"
     }
@@ -180,7 +178,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     standalone  =>  false,
     type        => 'metric',
     interval    => '120',
-    custom => {
+    custom      => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.net"
     }
@@ -192,7 +190,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     standalone  =>  false,
     type        => 'metric',
     interval    => '120',
-    custom => {
+    custom      => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.net"
     }
@@ -205,7 +203,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     standalone  =>  false,
     type        => 'metric',
     interval    => '120',
-    custom => {
+    custom      => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.io"
     }
@@ -217,7 +215,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     standalone  =>  false,
     type        => 'metric',
     interval    => '120',
-    custom => {
+    custom      => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.io"
     }
@@ -233,7 +231,7 @@ define sensucustom::vmware::datastore-checks ( $vcenter, $entity, $graphite_pref
     standalone  =>  false,
     type        => 'metric',
     interval    => '120',
-    custom => {
+    custom      => {
       source               => "${entity}",
       graphite_metric_path => "${graphite_prefix}.${graphite_folder}.datastores"
     }

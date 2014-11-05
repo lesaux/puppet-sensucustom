@@ -69,7 +69,8 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
     type        => 'metric',
     interval    => 30,
     custom      => {
-      source => $entity
+      source => $entity,
+      tags   => ['pythian_oncall'],
     }
   }
 ##HARDWARE CHECKS

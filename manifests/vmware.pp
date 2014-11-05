@@ -62,7 +62,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
 ## $graphite_folder: graphite folder of the host
 
   sensu::check { "check_esx_ping_${entity}":
-    command     => "/etc/sensu/plugins/check-ping.rb -h ${esxhost}",
+    command     => "/etc/sensu/plugins/check-ping.rb -h ${esxhost} -c 10 -C 0.8 -W 0.9 -i 1 -T 5",
     handlers    => ['flapjack'],
     subscribers => ['esx'],
     standalone  =>  false,

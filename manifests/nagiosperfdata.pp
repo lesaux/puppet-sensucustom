@@ -1,4 +1,7 @@
-class sensucustom::nagiosperfdata {
+class sensucustom::nagiosperfdata (
+  $graphite_ip   = '192.168.0.190',
+  $graphite_port = 2213,
+) {
 
   #require sensu
 
@@ -27,8 +30,8 @@ class sensucustom::nagiosperfdata {
     type    => 'tcp',
     mutator => ['nagios_perfdata_custom'],
     socket  => {
-      host => '10.251.0.98',
-      port => 2003,
+      host => $graphite_ip,
+      port => $graphite_port,
     }
   }
 
@@ -36,8 +39,8 @@ class sensucustom::nagiosperfdata {
     type    => 'tcp',
     mutator => ['only_check_output'],
     socket  => {
-      host => '10.251.0.98',
-      port => 2003,
+      host => $graphite_ip,
+      port => $graphite_port,
     }
   }
 

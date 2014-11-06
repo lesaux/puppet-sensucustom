@@ -9,7 +9,7 @@ $destination = '/etc/sensu/plugins',
 
   file { "${destination}/check_snmp_cisco.pl":
         ensure  => file,
-        source  => 'puppet:///modules/sensucustom/check_snmp_cisco.pl',
+        source  => 'puppet:///modules/sensucustom/sensuscripts/check_snmp_cisco.pl',
         owner   => sensu,
         group   => sensu,
         mode    => 0755,

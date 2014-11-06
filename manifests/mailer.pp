@@ -28,7 +28,7 @@ $smtp_domain = 'localdomain.com' )
 
   file { '/etc/sensu/conf.d/handlers/mailer.rb':
         ensure => file,
-        source => 'puppet:///modules/sensucustom/mailer.rb',
+        source => 'puppet:///modules/sensucustom/sensuhandlers/mailer.rb',
         owner  => sensu,
         group  => sensu,
         mode   => '0755',

@@ -1,5 +1,5 @@
 class sensucustom::nagiosperfdata (
-  $graphite_ip   = '192.168.0.190',
+  $graphite_ip   = 'localhost',
   $graphite_port = 2213,
 ) {
 
@@ -14,14 +14,14 @@ class sensucustom::nagiosperfdata (
 
   file { '/etc/sensu/extensions/nagios_perfdata.rb':
         ensure  => file,
-        source  => 'puppet:///modules/sensucustom/nagios_perfdata.rb',
+        source  => 'puppet:///modules/sensucustom/sensuhandlers/nagios_perfdata.rb',
         owner   => sensu,
         group   => sensu,
   }
 
   file { '/etc/sensu/extensions/nagios_perfdata_custom.rb':
         ensure => file,
-        source => 'puppet:///modules/sensucustom/nagios_perfdata_custom.rb',
+        source => 'puppet:///modules/sensucustom/sensuhandlers/nagios_perfdata_custom.rb',
         owner  => sensu,
         group  => sensu,
   }

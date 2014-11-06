@@ -13,7 +13,7 @@ class sensucustom::vmware (
 
   file { "${destination}/check_vmware_esx":
     ensure => file,
-    source => 'puppet:///modules/sensucustom/check_vmware_esx',
+    source => 'puppet:///modules/sensucustom/sensuscripts/check_vmware_esx',
     owner  => sensu,
     group  => sensu,
     mode   => '0755',
@@ -21,7 +21,7 @@ class sensucustom::vmware (
 
   file { "${destination}/check_vmware_esx.pl":
     ensure => file,
-    source => 'puppet:///modules/sensucustom/check_vmware_esx.pl',
+    source => 'puppet:///modules/sensucustom/sensuscripts/check_vmware_esx.pl',
     owner  => sensu,
     group  => sensu,
     mode   => '0755',
@@ -30,7 +30,7 @@ class sensucustom::vmware (
   file { "${destination}/modules":
     ensure  => directory,
     recurse => true,
-    source  => 'puppet:///modules/sensucustom/modules',
+    source  => 'puppet:///modules/sensucustom/sensuscripts/modules',
     owner   => sensu,
     group   => sensu,
     mode    => '0755',
@@ -38,7 +38,7 @@ class sensucustom::vmware (
 
   file { "${destination}/check_esx3":
     ensure => file,
-    source => 'puppet:///modules/sensucustom/check_esx3',
+    source => 'puppet:///modules/sensucustom/sensuscripts/check_esx3',
     owner  => sensu,
     group  => sensu,
     mode   => '0755',
@@ -46,7 +46,7 @@ class sensucustom::vmware (
 
   file { "${destination}/check_vmware_api.pl":
     ensure => file,
-    source => 'puppet:///modules/sensucustom/check_vmware_api.pl',
+    source => 'puppet:///modules/sensucustom/sensuscripts/check_vmware_api.pl',
     owner  => sensu,
     group  => sensu,
     mode   => '0755',

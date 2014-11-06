@@ -24,7 +24,7 @@ $redis_db   = '0', )
 
   file { '/etc/sensu/extensions/flapjack.rb':
         ensure  => file,
-        source  => 'puppet:///modules/sensucustom/flapjack.rb',
+        source  => 'puppet:///modules/sensucustom/sensuhandlers/flapjack.rb',
         owner   => sensu,
         group   => sensu,
   }

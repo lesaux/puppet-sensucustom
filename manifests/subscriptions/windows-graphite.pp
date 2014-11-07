@@ -57,7 +57,7 @@ class sensucustom::subscriptions::windows-graphite (
     handlers    => ['flapjack'],
   }
   sensu::check { 'check_graphite_windows_file_data_ops':
-    command     => "/pythian/sensu/checks/check-data.bat ${graphite_host} system.file_data_ops_sec \":::params.graphite.windows.system.file.data.ops.warning|5000:::\" \":::params.graphite.windows.system.file.data.ops.critical|6000:::\"",
+    command     => "/pythian/sensu/checks/check-data.bat ${graphite_host} system.file_data_ops_sec \":::params.graphite.windows.system.file.data.ops.warning|15000:::\" \":::params.graphite.windows.system.file.data.ops.critical|20000:::\"",
     subscribers => 'windows_graphite',
     standalone  =>  false,
     type        => 'metric',

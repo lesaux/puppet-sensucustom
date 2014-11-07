@@ -1,4 +1,4 @@
-class sensucustom::checks::linux-local {
+class sensucustom::subscriptions::linux-local {
 
   sensu::check { 'check_cpu':
     command     => '/etc/sensu/plugins/check-cpu.rb',

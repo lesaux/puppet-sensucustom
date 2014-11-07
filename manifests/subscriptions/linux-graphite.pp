@@ -1,4 +1,4 @@
-class sensucustom::checks::linux-graphite (
+class sensucustom::subscriptions::linux-graphite (
  $graphite_host = 'graphite',
 ) {
 

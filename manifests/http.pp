@@ -1,6 +1,6 @@
 define sensucustom::http::check (
-  $url = "http://localhost/whatever",
-  $source = localhost, )  {
+  $url    = "http://localhost/whatever",
+  $entity = localhost, )  {
     sensu::check { "check_http_${name}":
       command     => "/etc/sensu/plugins/check-http.rb -u $url -q ctl00",
       handlers    => ['flapjack'],
@@ -9,7 +9,7 @@ define sensucustom::http::check (
       type        => 'metric',
       interval    => '60',
       custom      => {
-        source => $source
+        source => $entity
       }
     }
 }

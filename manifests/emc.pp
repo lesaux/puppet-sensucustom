@@ -30,7 +30,7 @@ class sensucustom::emc (
 
 define sensucustom::emc::check ( $ip, $entity, $username, $password  ) {
 
-    sensu::check { "check_emc_faults_${host}":
+    sensu::check { "check_emc_faults_${entity}":
       command     => "/etc/sensu/plugins/check_emc_clariion.pl -H ${ip} --secfilepath $::sensucustom::emc::destination/check_emc_clariion_security_files -t faults",
       subscribers => 'remote_emc',
       handlers    => ['flapjack'],
@@ -42,7 +42,7 @@ define sensucustom::emc::check ( $ip, $entity, $username, $password  ) {
       }
     }
 
-    sensu::check { "check_emc_disks_${host}":
+    sensu::check { "check_emc_disks_${entity}":
       command     => "/etc/sensu/plugins/check_emc_clariion.pl -H ${ip} -u ${username} -p ${password} -t disk",
       subscribers => 'remote_emc',
       handlers    => ['flapjack'],
@@ -54,7 +54,7 @@ define sensucustom::emc::check ( $ip, $entity, $username, $password  ) {
       }
     }
 
-    sensu::check { "check_emc_cache_${host}":
+    sensu::check { "check_emc_cache_${entity}":
       command     => "/etc/sensu/plugins/check_emc_clariion.pl -H ${ip} -u ${username} -p ${password} -t cache",
       subscribers => 'remote_emc',
       handlers    => ['flapjack'],
@@ -66,7 +66,7 @@ define sensucustom::emc::check ( $ip, $entity, $username, $password  ) {
       }
     }
 
-    sensu::check { "check_emc_cache_pdp_${host}":
+    sensu::check { "check_emc_cache_pdp_${entity}":
       command     => "/etc/sensu/plugins/check_emc_clariion.pl -H ${ip} -u ${username} -p ${password} -t cache_pdp",
       subscribers => 'remote_emc',
       handlers    => ['flapjack'],
@@ -79,7 +79,7 @@ define sensucustom::emc::check ( $ip, $entity, $username, $password  ) {
     }
 
 
-    sensu::check { "check_emc_spA_${host}":
+    sensu::check { "check_emc_spA_${entity}":
       command     => "/etc/sensu/plugins/check_emc_clariion.pl -H ${ip} -u ${username} -p ${password} -t sp --sp A",
       subscribers => 'remote_emc',
       handlers    => ['flapjack'],
@@ -91,7 +91,7 @@ define sensucustom::emc::check ( $ip, $entity, $username, $password  ) {
       }
     }
 
-    sensu::check { "check_emc_spB_${host}":
+    sensu::check { "check_emc_spB_${entity}":
       command     => "/etc/sensu/plugins/check_emc_clariion.pl -H ${ip} -u ${username} -p ${password} -t sp --sp B",
       subscribers => 'remote_emc',
       handlers    => ['flapjack'],

@@ -1,7 +1,7 @@
 class sensucustom::emc ( 
   $destination = '/etc/sensu/plugins',
-  $username    = 'username',
-  $password    = 'password',
+  $username    = username,
+  $password    = password,
   $scope       = 1,
 ) {
 
@@ -36,7 +36,7 @@ define sensucustom::emc::check ( $ip, $entity ) {
       handlers    => ['flapjack'],
       standalone  =>  false,
       type        => 'metric',
-      interval    => '1800',
+      interval    => '180',
       custom => {
         source => "${entity}"
       }
@@ -48,7 +48,7 @@ define sensucustom::emc::check ( $ip, $entity ) {
       handlers    => ['flapjack'],
       standalone  =>  false,
       type        => 'metric',
-      interval    => '1800',
+      interval    => '180',
       custom => {
         source => "${entity}"
       }
@@ -60,7 +60,7 @@ define sensucustom::emc::check ( $ip, $entity ) {
       handlers    => ['flapjack'],
       standalone  =>  false,
       type        => 'metric',
-      interval    => '1800',
+      interval    => '180',
       custom => {
         source => "${entity}"
       }
@@ -72,7 +72,7 @@ define sensucustom::emc::check ( $ip, $entity ) {
       handlers    => ['flapjack'],
       standalone  =>  false,
       type        => 'metric',
-      interval    => '1800',
+      interval    => '180',
       custom => {
         source => "${entity}"
       }
@@ -85,7 +85,7 @@ define sensucustom::emc::check ( $ip, $entity ) {
       handlers    => ['flapjack'],
       standalone  =>  false,
       type        => 'metric',
-      interval    => '1800',
+      interval    => '180',
       custom => {
         source => "${entity}"
       }
@@ -97,7 +97,7 @@ define sensucustom::emc::check ( $ip, $entity ) {
       handlers    => ['flapjack'],
       standalone  =>  false,
       type        => 'metric',
-      interval    => '1800',
+      interval    => '180',
       custom => {
         source => "${entity}"
       }

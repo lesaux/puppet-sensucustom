@@ -15,8 +15,6 @@ class sensucustom::emc (
 
   file { "${destination}/check_emc_clariion_security_files":
     ensure  => directory,
-    recurse => true,
-    source  => 'puppet:///modules/sensucustom/sensuscripts/modules',
     owner   => sensu,
     group   => sensu,
     mode    => '0600',

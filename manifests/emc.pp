@@ -66,7 +66,7 @@ define sensucustom::emc::check ( $ip, $entity, $username, $password  ) {
       }
     }
 
-    sensu::check { "check_emc_cache_${host}":
+    sensu::check { "check_emc_cache_pdp_${host}":
       command     => "/etc/sensu/plugins/check_emc_clariion.pl -H ${ip} -u ${username} -p ${password} -t cache_pdp",
       subscribers => 'remote_emc',
       handlers    => ['flapjack'],

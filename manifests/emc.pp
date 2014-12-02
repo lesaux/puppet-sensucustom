@@ -31,7 +31,7 @@ class sensucustom::emc (
 define sensucustom::emc::check ( $ip, $entity, $username, $password  ) {
 
     sensu::check { "check_emc_faults_${host}":
-      command     => "/etc/sensu/plugins/check_emc_clariion.pl -H ${ip} -u ${username} -p ${password} -t faults",
+      command     => "/etc/sensu/plugins/check_emc_clariion.pl -H ${ip} --secfilepath $::sensucustom::emc::destination/check_emc_clariion_security_files -t faults",
       subscribers => 'remote_emc',
       handlers    => ['flapjack'],
       standalone  =>  false,

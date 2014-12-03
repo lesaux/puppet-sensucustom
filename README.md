@@ -1,10 +1,12 @@
-#Additional configs and "remote" checks for sensu.
+#Additional configs and "remote" checks for sensu. A few linux subscriptions are also included.
 Remote checks are run from a dedicated sensu-client.
 the source field is overriden by the remote hostname.
 the entity field (when event are forwarded to flapjack) is also overriden by the remote hostname.
 
 ##cisco.pp
 Adds cisco snmp check script.
+
+subscriptions: remote_cisco
 
 ####example usage:
 todo
@@ -16,14 +18,20 @@ You will need to have navisphere client installed. This can be done with the pup
 ####example usage:
 todo
 
+subscriptions: remote_emc
+
 ##http.pp
 Adds remote http checks capability. Both check-http.rb from sensu community plugins, and check_http from nagios plugins are supplied.
 
 ####example usage:
 todo
 
+subscriptions: remote_http
+
 ##ping.pp
 Adds remote ping checks capabilty. Then entity field in flapjack is overriden by the remote hostname.
+
+subscriptions: remote_ping
 
 ##vmware.pp
 Adds VMware ESX/vCenter remote health checks. Performance data is shipped to a graphite host.
@@ -51,6 +59,8 @@ create_resources( sensucustom::vmware::esx-checks, $esx_hosts)
 create_resources( sensucustom::vmware::datastore-checks, $datastores )
 ```
 
+subscriptions: remote_vmware
+
 ##mailer.pp
 Adds mailer handler for sensu
 
@@ -60,3 +70,11 @@ Adds flapjack handler for sensu
 ##nagiosperfdata.pp
 Adds nagios_perfdata mutator for sensu
 
+##subscriptions
+linux-graphite.pp
+
+linux-local.pp
+
+windows-graphite.pp
+
+windows-local.pp

@@ -8,6 +8,9 @@ class sensucustom::subscriptions::windows-graphite (
     standalone  =>  false,
     type        => 'metric',
     handlers    => ['flapjack'],
+    custom      => {
+      tags                => ['pythian_oncall'],
+    },
   }
   sensu::check { 'check_graphite_windows_disk_percent_free_space':
     command     => "/pythian/sensu/checks/check-data.bat ${graphite_host} disk.percent_free_space_* \":::params.graphite.windows.disk.percent.free.warning|10:::\" \":::params.graphite.windows.disk.percent.free.critical|5:::\" -b",
@@ -16,6 +19,7 @@ class sensucustom::subscriptions::windows-graphite (
     type        => 'metric',
     handlers    => ['flapjack'],
     custom      => {
+      tags                => ['pythian_oncall'],
       occurrences         => 10,
       low_flap_threshold  => 5,
       high_flap_threshold => 25,

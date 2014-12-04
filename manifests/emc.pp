@@ -21,7 +21,7 @@ class sensucustom::emc (
   }->
 
   exec {'emc_security_file':
-    command => "/bin/su -c '/opt/Navisphere/bin/naviseccli -secfilepath ${destination}/check_emc_clariion_security_files -User ${username} -Password ${password} -Scope ${scope} -AddUserSecurity' sensu",
+    command => "/bin/su -s /bin/bash -c '/opt/Navisphere/bin/naviseccli -secfilepath ${destination}/check_emc_clariion_security_files -User ${username} -Password ${password} -Scope ${scope} -AddUserSecurity' sensu",
     unless  => "/usr/bin/test -f ${destination}/check_emc_clariion_security_files/SecuredCLISecurityFile.xml",
   }
 

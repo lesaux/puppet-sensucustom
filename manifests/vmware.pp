@@ -256,7 +256,8 @@ define sensucustom::vmware::datastore-checks ( $vcenter, $entity, $graphite_pref
     interval    => '30',
     custom      => {
       source               => "${entity}",
-      graphite_metric_path => "${graphite_prefix}.${graphite_folder}.datastores"
+      graphite_metric_path => "${graphite_prefix}.${graphite_folder}.datastores",
+      tags                 => ['pythian_oncall']
     }
   }
 }

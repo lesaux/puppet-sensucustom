@@ -20,9 +20,6 @@ class sensucustom::subscriptions::windows-graphite (
     handlers    => ['flapjack'],
     custom      => {
       tags                => ['pythian_oncall'],
-      occurrences         => 10,
-      low_flap_threshold  => 5,
-      high_flap_threshold => 25,
     },
   }
   sensu::check { 'check_graphite_windows_network_packets_discarded':

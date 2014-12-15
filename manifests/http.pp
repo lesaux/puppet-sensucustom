@@ -3,11 +3,11 @@ class sensucustom::http {
   case $::osfamily {
     'redhat': {
       ensure_packages('nagios-plugins-http')
-      $nagios_plugins_path = "/usr/lib64/nagios/plugins" 
+      $nagios_plugins_path = '/usr/lib64/nagios/plugins'
     }
     'debian': {
       ensure_packages('nagios-plugins')
-      $nagios_plugins_path = "/usr/lib/nagios/plugins" 
+      $nagios_plugins_path = '/usr/lib/nagios/plugins'
     }
   }
   
@@ -16,18 +16,19 @@ class sensucustom::http {
 
 
 define sensucustom::http::check (
-  $url        = "http://localhost/whatever",
+  $url        = 'http://localhost/whatever',
   $entity     = localhost,
   $parameters = null, )  {
     sensu::check { "check_http_${name}":
-      command     => "/etc/sensu/plugins/check-http.rb -u $url $parameters",
+      command     => "/etc/sensu/plugins/check-http.rb -u ${url} ${parameters}",
       handlers    => ['flapjack'],
-      subscribers => "remote_http",
+      subscribers => 'remote_http',
       standalone  =>  false,
       type        => 'metric',
       interval    => '60',
       custom      => {
-        source => $entity
+        source => $entity,
+        tags   => ['pythian_oncall']
       }
     }
 }
@@ -37,14 +38,15 @@ define sensucustom::http::check-nagios (
   $entity     = localhost,
   $parameters = null, )  {
     sensu::check { "check_http_nagios_${name}":
-      command     => "$::sensucustom::http::nagios_plugins_path/check_http -I $ip $parameters",
+      command     => "${::sensucustom::http::nagios_plugins_path}/check_http -I ${ip} ${parameters}",
       handlers    => ['flapjack'],
-      subscribers => "remote_http",
+      subscribers => 'remote_http',
       standalone  =>  false,
       type        => 'metric',
       interval    => '60',
       custom      => {
-        source => $entity
+        source => $entity,
+        tags   => ['pythian_oncall']
       }
     }
 }

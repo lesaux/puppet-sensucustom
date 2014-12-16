@@ -38,7 +38,7 @@ define sensucustom::http::check-nagios (
   $entity     = localhost,
   $parameters = null, )  {
     sensu::check { "check_http_nagios_${name}":
-      command     => "${nagios_plugins_path}/check_http -I ${ip} ${parameters}",
+      command     => "$::sensucustom:http::nagios_plugins_path/check_http -I ${ip} ${parameters}",
       handlers    => ['flapjack'],
       subscribers => 'remote_http',
       standalone  =>  false,

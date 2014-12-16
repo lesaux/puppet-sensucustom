@@ -4,7 +4,16 @@ class sensucustom::vmware (
   $password = password,
 ) {
 
-  ensure_packages(['libnagios-plugin-perl'])
+case $::osfamily {
+   'redhat': {
+     ensure_packages(['nagios-plugins-perl'])
+   }
+   'debian': {
+     ensure_packages(['libnagios-plugin-perl'])
+   }
+}
+
+
 
   exec {'cpan_Time_Duration':
     command => '/usr/bin/cpan Time::Duration',

@@ -3,8 +3,14 @@ class sensucustom::cisco (
 $destination = '/etc/sensu/plugins',
 
 ) {
-
-  ensure_packages(['snmp-mibs-downloader','snmp'])
+case $::osfamily {
+   'redhat': {
+     ensure_packages(['net-snmp','net-snmp-perl','net-snmp-utils','net-snmp-libs'])
+   }
+   'debian': {
+     ensure_packages(['snmp-mibs-downloader','snmp'])
+   }
+}
 
 
   file { "${destination}/check_snmp_cisco.pl":

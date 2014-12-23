@@ -38,7 +38,8 @@ define sensucustom::emc::check ( $ip, $entity ) {
       type        => 'metric',
       interval    => '180',
       custom => {
-        source => "${entity}"
+        source => "${entity}",
+        tags   => ['pythian_oncall']
       }
     }
 
@@ -50,7 +51,8 @@ define sensucustom::emc::check ( $ip, $entity ) {
       type        => 'metric',
       interval    => '180',
       custom => {
-        source => "${entity}"
+        source => "${entity}",
+        tags   => ['pythian_oncall']
       }
     }
 
@@ -74,7 +76,8 @@ define sensucustom::emc::check ( $ip, $entity ) {
       type        => 'metric',
       interval    => '180',
       custom => {
-        source => "${entity}"
+        source => "${entity}",
+        tags   => ['pythian_oncall']
       }
     }
 
@@ -87,7 +90,8 @@ define sensucustom::emc::check ( $ip, $entity ) {
       type        => 'metric',
       interval    => '180',
       custom => {
-        source => "${entity}"
+        source => "${entity}",
+        tags   => ['pythian_oncall']
       }
     }
 
@@ -99,7 +103,8 @@ define sensucustom::emc::check ( $ip, $entity ) {
       type        => 'metric',
       interval    => '180',
       custom => {
-        source => "${entity}"
+        source => "${entity}",
+        tags   => ['pythian_oncall']
       }
     }
 

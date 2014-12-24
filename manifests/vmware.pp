@@ -77,7 +77,7 @@ case $::osfamily {
 }
 
 
-define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_prefix, $graphite_folder ) {
+define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_prefix, $graphite_folder, $ping_params ) {
 
 ## you are expected to have a flapjack handler and a nagios perfdata to graphite metrics handler
 ## $vcenter: ip address or resolvable hostname of the vcenter
@@ -88,7 +88,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
 ## $graphite_folder: graphite folder of the host
 
   sensu::check { "check_esx_ping_${entity}":
-    command     => "/etc/sensu/plugins/check-ping.rb -h ${esxhost} -c 10 -C 0.8 -W 0.9 -i 1 -T 5",
+    command     => "/etc/sensu/plugins/check-ping.rb -h ${esxhost} ${ping_params}",
     handlers    => ['flapjack'],
     subscribers => ['remote_esx'],
     standalone  =>  false,

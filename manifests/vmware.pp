@@ -257,7 +257,7 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
 define sensucustom::vmware::datastore-checks ( $vcenter, $entity, $graphite_prefix, $graphite_folder ) {
   sensu::check { "check_vcenter_datastores_$entity":
     #command     => "/etc/sensu/plugins/check_vmware_esx -f /etc/sensu/plugins/check_${vcenter}_esx_authfile -D ${vcenter} -S volumes",
-    command     => "/etc/sensu/plugins/check_vmware_esx.pl -f /etc/sensu/plugins/check_${vcenter}_esx_authfile -D ${vcenter} --select=volumes --gigabyte --spaceleft -w 55 -c 50",
+    command     => "/etc/sensu/plugins/check_vmware_esx.pl -f /etc/sensu/plugins/check_${vcenter}_esx_authfile -D ${vcenter} --select=volumes --gigabyte --spaceleft -w 50 -c 45",
     handlers    => ['flapjack','graphite_custom'],
     subscribers => 'remote_esx',
     standalone  =>  false,

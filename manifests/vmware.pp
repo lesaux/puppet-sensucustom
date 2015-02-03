@@ -285,4 +285,4 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
       }
     }
   }
-}
+

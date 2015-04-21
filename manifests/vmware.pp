@@ -270,8 +270,8 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
       }
       }
     } else {
-      sensu::check { "check_vcenter_datastores_$entity_${datastore[name]}":
-      command     => "/etc/sensu/plugins/check_vmware_esx.pl -f /etc/sensu/plugins/check_${vcenter}_esx_authfile -D ${vcenter} --select=volumes --gigabyte --spaceleft -w ${datastore[warning]} -c ${datastore[critical]} --include=${datastore[name]}",
+      sensu::check { "check_vcenter_datastores_${entity}_${datastore[name]}":
+      command     => "/etc/sensu/plugins/check_vmware_esx.pl -f /etc/sensu/plugins/check_${vcenter}_esx_authfile -D ${vcenter} --select=volumes --gigabyte --spaceleft -w ${datastore[warning]} -c ${datastore[critical]} --include=\"${datastore[name]}\"",
       handlers    => ['flapjack','graphite_custom'],
       subscribers => 'remote_esx',
       standalone  =>  false,
@@ -285,4 +285,4 @@ define sensucustom::vmware::esx-checks ( $vcenter, $esxhost, $entity, $graphite_
       }
     }
   }
-}
+
